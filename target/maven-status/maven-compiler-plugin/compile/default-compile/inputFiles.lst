@@ -1,2 +1,4 @@
-/home/dazhi/mini-spring/src/main/java/BeanFactory.java
-/home/dazhi/mini-spring/src/main/java/BeanDefinition.java
+/home/dazhi/mini-spring/src/main/java/minispring/factory/BeanFactory.java
+/home/dazhi/mini-spring/src/main/java/minispring/factory/AbstractBeanFactory.java
+/home/dazhi/mini-spring/src/main/java/minispring/factory/AutowireCapableBeanFactory.java
+/home/dazhi/mini-spring/src/main/java/minispring/BeanDefinition.java

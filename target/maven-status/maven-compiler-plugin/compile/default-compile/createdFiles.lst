@@ -1,0 +1,4 @@
+minispring/factory/BeanFactory.class
+minispring/factory/AutowireCapableBeanFactory.class
+minispring/BeanDefinition.class
+minispring/factory/AbstractBeanFactory.class
