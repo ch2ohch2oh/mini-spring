@@ -3,7 +3,8 @@ package minispring;
 /**
  * The `BeanDefinition` class holds information about bean.
  * For example, the class of the bean, so that we know how
- * to instantiate a bean.
+ * to instantiate a bean. It also hold other meta information
+ * of the bean as properties.
  */
 public class BeanDefinition {
 
@@ -12,6 +13,9 @@ public class BeanDefinition {
     private Class beanClass;
 
     private String beanClassName;
+
+    private PropertyValueCollection properties;
+
 
     public void setBean(Object bean) {
         this.bean = bean;
@@ -37,6 +41,14 @@ public class BeanDefinition {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    public PropertyValueCollection getProperties() {
+        return properties;
+    }
+
+    public void setProperties(PropertyValueCollection properties) {
+        this.properties = properties;
     }
 
     public Object getBean() {

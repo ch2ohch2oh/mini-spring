@@ -1,4 +1,7 @@
 /home/dazhi/mini-spring/src/main/java/minispring/factory/BeanFactory.java
+/home/dazhi/mini-spring/src/main/java/minispring/PropertyValueCollection.java
 /home/dazhi/mini-spring/src/main/java/minispring/factory/AbstractBeanFactory.java
 /home/dazhi/mini-spring/src/main/java/minispring/factory/AutowireCapableBeanFactory.java
 /home/dazhi/mini-spring/src/main/java/minispring/BeanDefinition.java
+/home/dazhi/mini-spring/src/main/java/minispring/PropertyValue.java
+/home/dazhi/mini-spring/src/main/java/minispring/PropertyValueList.java

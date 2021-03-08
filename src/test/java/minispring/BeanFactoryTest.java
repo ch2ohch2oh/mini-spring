@@ -14,10 +14,19 @@ public class BeanFactoryTest {
 
         BeanDefinition beanDefinition = new BeanDefinition();
         beanDefinition.setBeanClassName("minispring.HelloService");
+
+        // Setup bean properties
+        PropertyValueCollection pvList = new PropertyValueList();
+        pvList.addPropertyValue(new PropertyValue("message", "omg"));
+        beanDefinition.setProperties(pvList);
+
+        // Register the bean
         beanFactory.registerBeanDefinition("helloService", beanDefinition);
 
+        // Instantiate the bean using the factory
         HelloService helloService = (HelloService) beanFactory.getBean("helloService");
 
         assertEquals("Hello", helloService.hello());
+        assertEquals("omg", helloService.getMessage());
     }
 }
