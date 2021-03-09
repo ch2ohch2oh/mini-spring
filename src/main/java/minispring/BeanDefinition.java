@@ -1,5 +1,7 @@
 package minispring;
 
+import java.util.ArrayList;
+
 /**
  * The `BeanDefinition` class holds information about bean.
  * For example, the class of the bean, so that we know how
@@ -14,8 +16,7 @@ public class BeanDefinition {
 
     private String beanClassName;
 
-    private PropertyValueCollection properties;
-
+    private PropertyValueCollection properties = new PropertyValueList();
 
     public void setBean(Object bean) {
         this.bean = bean;

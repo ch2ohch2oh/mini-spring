@@ -2,7 +2,11 @@ package minispring;
 
 import minispring.factory.AutowireCapableBeanFactory;
 import minispring.factory.BeanFactory;
+import minispring.io.ResourceLoader;
+import minispring.xml.XmlBeanDefinitionReader;
 import org.junit.Test;
+
+import java.util.Map;
 
 import static org.junit.Assert.*;
 
@@ -29,4 +33,26 @@ public class BeanFactoryTest {
         assertEquals("Hello", helloService.hello());
         assertEquals("omg", helloService.getMessage());
     }
+
+    @Test
+    public void testHelloServiceXml() throws Exception{
+        // First we get read the bean definitions from xml
+        XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(new ResourceLoader());
+        reader.loadBeanDefinitions("hello.xml");
+
+        // Set up the bean factory
+        BeanFactory beanFactory = new AutowireCapableBeanFactory();
+        for(Map.Entry<String, BeanDefinition> entry : reader.getRegistry().entrySet()) {
+            beanFactory.registerBeanDefinition(entry.getKey(), entry.getValue());
+        }
+
+        // Instantiate the bean using the factory
+        HelloService helloService = (HelloService) beanFactory.getBean("helloService");
+        HelloService helloService2 = (HelloService) beanFactory.getBean("helloService2");
+
+        assertEquals("hello", helloService.getMessage());
+        assertEquals("bonjour", helloService2.getMessage());
+
+    }
+
 }

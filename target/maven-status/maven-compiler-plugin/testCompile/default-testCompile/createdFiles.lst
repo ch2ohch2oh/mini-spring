@@ -1,2 +1,4 @@
-minispring/HelloService.class
+minispring/io/ResourceLoaderTest.class
+minispring/xml/XmlBeanDefinitionReaderTest.class
 minispring/BeanFactoryTest.class
+minispring/HelloService.class
