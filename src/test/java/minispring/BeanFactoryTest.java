@@ -55,4 +55,18 @@ public class BeanFactoryTest {
 
     }
 
+    @Test
+    public void testBeanInjectionXml() throws Exception {
+        XmlBeanDefinitionReader xmlReader = new XmlBeanDefinitionReader(new ResourceLoader());
+        xmlReader.loadBeanDefinitions("beanRef.xml");
+
+        BeanFactory beanFactory = new AutowireCapableBeanFactory();
+        beanFactory.registerBeanDefinition(xmlReader.getRegistry());
+
+        Resource resource = beanFactory.getBean("resource", Resource.class);
+        ResourceReader resourceReader = beanFactory.getBean("resourceReader", ResourceReader.class);
+
+        assertEquals("tres bien", resource.getValue());
+        assertEquals("tres bien", resourceReader.read());
+    }
 }

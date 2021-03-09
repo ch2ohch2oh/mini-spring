@@ -2,6 +2,7 @@ package minispring.xml;
 
 import minispring.AbstractBeanDefinitionReader;
 import minispring.BeanDefinition;
+import minispring.BeanReference;
 import minispring.PropertyValue;
 import minispring.io.ResourceLoader;
 import org.w3c.dom.Document;
@@ -47,7 +48,7 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
         }
     }
 
-    protected void processAndRegisterBeanElement(Element e) {
+    protected void processAndRegisterBeanElement(Element e) throws IllegalArgumentException {
         String name = e.getAttribute("name");
         String className = e.getAttribute("class");
 
@@ -61,7 +62,18 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
                 Element pElement = (Element) node;
                 String pName = pElement.getAttribute("name");
                 String pValue = pElement.getAttribute("value");
-                bean.getProperties().addPropertyValue(new PropertyValue(pName, pValue));
+                // If value is not null, then there should be no ref
+                if(pValue != null && pValue.length() > 0) {
+                    bean.getProperties().addPropertyValue(new PropertyValue(pName, pValue));
+                } else {
+                    String ref = pElement.getAttribute("ref");
+                    if(ref == null || ref.length() == 0) {
+                        throw new IllegalArgumentException("ref is not specified");
+                    }
+                    BeanReference beanReference = new BeanReference(ref);
+                    bean.getProperties().addPropertyValue(new PropertyValue(pName, beanReference));
+                }
+
             }
         }
         bean.setBeanClassName(className);
