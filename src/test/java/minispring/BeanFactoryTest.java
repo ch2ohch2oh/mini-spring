@@ -6,6 +6,7 @@ import minispring.io.ResourceLoader;
 import minispring.xml.XmlBeanDefinitionReader;
 import org.junit.Test;
 
+import java.time.Year;
 import java.util.Map;
 
 import static org.junit.Assert.*;
@@ -68,5 +69,24 @@ public class BeanFactoryTest {
 
         assertEquals("tres bien", resource.getValue());
         assertEquals("tres bien", resourceReader.read());
+    }
+
+    @Test
+    public void testCyclicDependency() throws Exception {
+        XmlBeanDefinitionReader xmlReader = new XmlBeanDefinitionReader(new ResourceLoader());
+        xmlReader.loadBeanDefinitions("cycle.xml");
+
+        BeanFactory beanFactory = new AutowireCapableBeanFactory();
+        beanFactory.registerBeanDefinition(xmlReader.getRegistry());
+
+        Cycle c1 = beanFactory.getBean("c1", Cycle.class);
+        Cycle c2 = beanFactory.getBean("c2", Cycle.class);
+
+        assertEquals("c1", c1.getText());
+        assertEquals("c2", c1.getBuddy().getText());
+        assertEquals("c2", c2.getText());
+        assertEquals("c1", c2.getBuddy().getText());
+
+
     }
 }
