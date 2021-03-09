@@ -1,8 +1,8 @@
 package minispring.factory;
 
-import minispring.BeanDefinition;
-import minispring.BeanReference;
-import minispring.PropertyValue;
+import minispring.beans.BeanDefinition;
+import minispring.beans.BeanReference;
+import minispring.beans.PropertyValue;
 
 import java.lang.reflect.Field;
 

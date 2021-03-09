@@ -1,12 +1,16 @@
 package minispring;
 
+import minispring.beans.BeanDefinition;
+import minispring.beans.PropertyValue;
+import minispring.beans.PropertyValueCollection;
+import minispring.beans.PropertyValueList;
+import minispring.factory.AbstractBeanFactory;
 import minispring.factory.AutowireCapableBeanFactory;
 import minispring.factory.BeanFactory;
 import minispring.io.ResourceLoader;
 import minispring.xml.XmlBeanDefinitionReader;
 import org.junit.Test;
 
-import java.time.Year;
 import java.util.Map;
 
 import static org.junit.Assert.*;
@@ -15,7 +19,7 @@ public class BeanFactoryTest {
 
     @Test
     public void testHelloService() {
-        BeanFactory beanFactory = new AutowireCapableBeanFactory();
+        AbstractBeanFactory beanFactory = new AutowireCapableBeanFactory();
 
         BeanDefinition beanDefinition = new BeanDefinition();
         beanDefinition.setBeanClassName("minispring.HelloService");
@@ -42,7 +46,7 @@ public class BeanFactoryTest {
         reader.loadBeanDefinitions("hello.xml");
 
         // Set up the bean factory
-        BeanFactory beanFactory = new AutowireCapableBeanFactory();
+        AbstractBeanFactory beanFactory = new AutowireCapableBeanFactory();
         for(Map.Entry<String, BeanDefinition> entry : reader.getRegistry().entrySet()) {
             beanFactory.registerBeanDefinition(entry.getKey(), entry.getValue());
         }
@@ -61,7 +65,7 @@ public class BeanFactoryTest {
         XmlBeanDefinitionReader xmlReader = new XmlBeanDefinitionReader(new ResourceLoader());
         xmlReader.loadBeanDefinitions("beanRef.xml");
 
-        BeanFactory beanFactory = new AutowireCapableBeanFactory();
+        AbstractBeanFactory beanFactory = new AutowireCapableBeanFactory();
         beanFactory.registerBeanDefinition(xmlReader.getRegistry());
 
         Resource resource = beanFactory.getBean("resource", Resource.class);
@@ -76,7 +80,7 @@ public class BeanFactoryTest {
         XmlBeanDefinitionReader xmlReader = new XmlBeanDefinitionReader(new ResourceLoader());
         xmlReader.loadBeanDefinitions("cycle.xml");
 
-        BeanFactory beanFactory = new AutowireCapableBeanFactory();
+        AbstractBeanFactory beanFactory = new AutowireCapableBeanFactory();
         beanFactory.registerBeanDefinition(xmlReader.getRegistry());
 
 //        beanFactory.preInstantiateSingletons();

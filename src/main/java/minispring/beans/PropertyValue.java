@@ -1,4 +1,4 @@
-package minispring;
+package minispring.beans;
 
 /**
  * Read-only property values.

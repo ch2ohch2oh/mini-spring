@@ -1,6 +1,4 @@
-package minispring;
-
-import java.util.ArrayList;
+package minispring.beans;
 
 /**
  * The `BeanDefinition` class holds information about bean.

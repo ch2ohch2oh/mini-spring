@@ -1,9 +1,9 @@
 package minispring.xml;
 
-import minispring.AbstractBeanDefinitionReader;
-import minispring.BeanDefinition;
-import minispring.BeanReference;
-import minispring.PropertyValue;
+import minispring.beans.AbstractBeanDefinitionReader;
+import minispring.beans.BeanDefinition;
+import minispring.beans.BeanReference;
+import minispring.beans.PropertyValue;
 import minispring.io.ResourceLoader;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

@@ -1,7 +1,6 @@
 package minispring.factory;
 
-import minispring.BeanDefinition;
-import minispring.BeanReference;
+import minispring.beans.BeanDefinition;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +50,6 @@ public abstract class AbstractBeanFactory implements BeanFactory {
      * @param name
      * @param beanDefinition
      */
-    @Override
     public void registerBeanDefinition(String name, BeanDefinition beanDefinition) {
         // Do NOT create the beans here. Otherwise, the cyclic dependency will
         // cause infinite loop. Delay the creation to `getBean`.
@@ -62,7 +60,6 @@ public abstract class AbstractBeanFactory implements BeanFactory {
      * A convenience function to register bean definitions
      * @param beanDefinitionMap
      */
-    @Override
     public void registerBeanDefinition(Map<String, BeanDefinition> beanDefinitionMap) {
         for(Map.Entry<String, BeanDefinition> entry : beanDefinitionMap.entrySet()) {
             registerBeanDefinition(entry.getKey(), entry.getValue());

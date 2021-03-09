@@ -1,6 +1,6 @@
 package minispring.factory;
 
-import minispring.BeanDefinition;
+import minispring.beans.BeanDefinition;
 
 import java.util.Map;
 
@@ -15,10 +15,6 @@ public interface BeanFactory {
 
     public <T> T getBean(String name, Class T);
 
-    public void registerBeanDefinition(String name, BeanDefinition beanDefinition);
 
-    public void registerBeanDefinition(Map<String, BeanDefinition> beanDefinitionMap);
-
-    public void preInstantiateSingletons();
 
 }

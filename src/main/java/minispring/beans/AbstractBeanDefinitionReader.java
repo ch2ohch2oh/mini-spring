@@ -1,5 +1,7 @@
-package minispring;
+package minispring.beans;
 
+import minispring.beans.BeanDefinition;
+import minispring.beans.BeanDefinitionReader;
 import minispring.io.ResourceLoader;
 
 import java.util.HashMap;

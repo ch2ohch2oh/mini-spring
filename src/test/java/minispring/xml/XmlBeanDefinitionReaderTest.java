@@ -1,6 +1,6 @@
 package minispring.xml;
 
-import minispring.BeanDefinition;
+import minispring.beans.BeanDefinition;
 import minispring.io.ResourceLoader;
 import org.junit.Test;
 

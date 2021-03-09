@@ -1,4 +1,7 @@
-package minispring;
+package minispring.beans;
+
+import minispring.beans.PropertyValue;
+import minispring.beans.PropertyValueCollection;
 
 import java.util.ArrayList;
 import java.util.Collection;
