@@ -19,4 +19,6 @@ public interface BeanFactory {
 
     public void registerBeanDefinition(Map<String, BeanDefinition> beanDefinitionMap);
 
+    public void preInstantiateSingletons();
+
 }

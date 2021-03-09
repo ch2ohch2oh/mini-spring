@@ -79,6 +79,8 @@ public class BeanFactoryTest {
         BeanFactory beanFactory = new AutowireCapableBeanFactory();
         beanFactory.registerBeanDefinition(xmlReader.getRegistry());
 
+//        beanFactory.preInstantiateSingletons();
+
         Cycle c1 = beanFactory.getBean("c1", Cycle.class);
         Cycle c2 = beanFactory.getBean("c2", Cycle.class);
 

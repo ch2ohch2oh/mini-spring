@@ -53,8 +53,8 @@ public abstract class AbstractBeanFactory implements BeanFactory {
      */
     @Override
     public void registerBeanDefinition(String name, BeanDefinition beanDefinition) {
-        Object bean = createBean(beanDefinition);
-        beanDefinition.setBean(bean);
+        // Do NOT create the beans here. Otherwise, the cyclic dependency will
+        // cause infinite loop. Delay the creation to `getBean`.
         beanDefinitionMap.put(name, beanDefinition);
     }
 
