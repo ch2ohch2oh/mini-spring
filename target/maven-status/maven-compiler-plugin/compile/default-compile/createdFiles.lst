@@ -1,6 +1,7 @@
 minispring/AbstractBeanDefinitionReader.class
 minispring/factory/BeanFactory.class
 minispring/factory/AutowireCapableBeanFactory.class
+minispring/BeanReference.class
 minispring/BeanDefinitionReader.class
 minispring/io/ResourceLoader.class
 minispring/io/UrlResource.class
